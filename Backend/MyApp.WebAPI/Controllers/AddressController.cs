@@ -12,8 +12,7 @@ namespace MyApp.WebAPI.Controllers
     [RoutePrefix("api/address")]
     public class AddressController : ApiController
     {
-        //todo configure IOC Unity
-        private readonly IAddressRepo _addressRepo = new AddressRepo(new SqlServerModel.MyAppDbContext());
+        private readonly IAddressRepo _addressRepo;
 
         public AddressController()
         {

@@ -13,8 +13,7 @@ namespace MyApp.WebAPI.Controllers
     [RoutePrefix("api/contact")]
     public class ContactController : ApiController
     {
-        //todo configure IOC Unity
-        private readonly IContactRepo _contactRepo = new ContactRepo(new SqlServerModel.MyAppDbContext());
+        private readonly IContactRepo _contactRepo;
 
         public ContactController()
         {
