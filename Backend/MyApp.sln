@@ -7,6 +7,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.SqlServerModel", "MyA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.WebAPI", "MyApp.WebAPI\MyApp.WebAPI.csproj", "{3FB773F9-4CB8-484F-81DE-FA2D052DC2E6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.SqlServerModel.Tests", "MyApp.SqlServerModel.Tests\MyApp.SqlServerModel.Tests.csproj", "{C4D704A2-081D-4DE1-9D55-AEF8C9DF2A2F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1EF0C874-A9EB-487D-9DFD-C464C9FC3B15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.WebAPI.Tests", "MyApp.WebAPI.Tests\MyApp.WebAPI.Tests.csproj", "{07D40857-712C-40BD-8B60-76C206D2DB1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.DataSeeder", "MyApp.DataSeeder\MyApp.DataSeeder.csproj", "{D8B5E348-0E34-480D-AC59-12A1B623354A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +29,25 @@ Global
 		{3FB773F9-4CB8-484F-81DE-FA2D052DC2E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FB773F9-4CB8-484F-81DE-FA2D052DC2E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FB773F9-4CB8-484F-81DE-FA2D052DC2E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4D704A2-081D-4DE1-9D55-AEF8C9DF2A2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4D704A2-081D-4DE1-9D55-AEF8C9DF2A2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4D704A2-081D-4DE1-9D55-AEF8C9DF2A2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4D704A2-081D-4DE1-9D55-AEF8C9DF2A2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07D40857-712C-40BD-8B60-76C206D2DB1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07D40857-712C-40BD-8B60-76C206D2DB1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07D40857-712C-40BD-8B60-76C206D2DB1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07D40857-712C-40BD-8B60-76C206D2DB1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8B5E348-0E34-480D-AC59-12A1B623354A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8B5E348-0E34-480D-AC59-12A1B623354A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8B5E348-0E34-480D-AC59-12A1B623354A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8B5E348-0E34-480D-AC59-12A1B623354A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C4D704A2-081D-4DE1-9D55-AEF8C9DF2A2F} = {1EF0C874-A9EB-487D-9DFD-C464C9FC3B15}
+		{07D40857-712C-40BD-8B60-76C206D2DB1C} = {1EF0C874-A9EB-487D-9DFD-C464C9FC3B15}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6F3F28C6-6E0C-406B-B980-20FB48F99910}

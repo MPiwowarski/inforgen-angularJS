@@ -1,0 +1,11 @@
+﻿//Enable migrations
+Enable-Migrations
+
+//Create new migration class in Migration folder
+Add-migration migrationName
+
+//Make changes in database after creation of migration class
+Update-Database
+
+//You can revert the database to the Initial migration state by:
+Update-Database -TargetMigration:Initial
