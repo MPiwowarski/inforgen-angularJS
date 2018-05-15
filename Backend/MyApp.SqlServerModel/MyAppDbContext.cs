@@ -17,7 +17,16 @@ namespace MyApp.SqlServerModel
 
         }
 
+        public MyAppDbContext(string connectionString)
+            : base(connectionString)
+        {
 
+        }
+
+        public static MyAppDbContext Create()
+        {
+            return new MyAppDbContext();
+        }
 
         public virtual DbSet<Address> Address { get; set; }
 
