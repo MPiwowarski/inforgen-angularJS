@@ -6,6 +6,7 @@ namespace MyApp.SqlServerModel.Repositories
     public interface IAddressRepo
     {
         Address Create(Address entity);
+        Address Update(Address entity);
         Address FindById(int id);
         ICollection<Address> GetAll();
         bool Remove(int id);

@@ -30,6 +30,21 @@ namespace MyApp.SqlServerModel.Repositories
             }
         }
 
+        public Address Update(Address entity)
+        {
+            try
+            {
+                _db.Entry(entity).CurrentValues.SetValues(entity);
+                _db.SaveChanges();
+                return entity;
+            }
+            catch (Exception ex)
+            {
+                //log exception
+                return null;
+            }
+        }
+
         public bool Remove(int id)
         {
             try

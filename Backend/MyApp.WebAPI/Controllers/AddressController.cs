@@ -9,8 +9,10 @@ using System.Web.Http;
 
 namespace MyApp.WebAPI.Controllers
 {
+    [RoutePrefix("api/address")]
     public class AddressController : ApiController
     {
+        //todo configure IOC Unity
         private readonly IAddressRepo _addressRepo = new AddressRepo(new SqlServerModel.MyAppDbContext());
 
         public AddressController()
@@ -28,28 +30,31 @@ namespace MyApp.WebAPI.Controllers
         {
             var result = _addressRepo.GetAll();
             return result;
-            //return new string[] { "value1", "value2" };
         }
 
         // GET api/values/5
-        public string Get(int id)
+        public Address Get(int id)
         {
-            return "value";
+            return _addressRepo.FindById(id);
         }
 
         // POST api/values
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Address value)
         {
+            _addressRepo.Create(value);
         }
 
         // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
+        public void Put([FromBody]Address value)
         {
+            _addressRepo.Update(value);
         }
 
         // DELETE api/values/5
         public void Delete(int id)
         {
+            _addressRepo.Remove(id);
         }
+
     }
 }

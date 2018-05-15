@@ -1,4 +1,5 @@
-﻿using MyApp.SqlServerModel.Entities;
+﻿using MyApp.SqlServerModel.DataStructure;
+using MyApp.SqlServerModel.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,11 +18,26 @@ namespace MyApp.SqlServerModel.Repositories
         }
 
         public Contact Create(Contact entity)
-        {    
+        {
             try
             {
                 return _db.Set<Contact>().Add(entity);
                 _db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                //log exception
+                return null;
+            }
+        }
+
+        public Contact Update(Contact entity)
+        {
+            try
+            {
+                _db.Entry(entity).CurrentValues.SetValues(entity);
+                _db.SaveChanges();
+                return entity;
             }
             catch (Exception ex)
             {
@@ -69,6 +85,30 @@ namespace MyApp.SqlServerModel.Repositories
             {
                 //log exception
                 return null;
+            }
+        }
+
+        public bool AddAddress(int contactId, int addressId, AddressTypeEnum addressType)
+        {
+            try
+            {
+                var contact = _db.Contact.First(x => x.Id == contactId);
+                var address = _db.Address.First(x => x.Id == addressId);
+                var rel = new ContactAddress()
+                {
+                    Address = address,
+                    Contact = contact,
+                    AddressType = addressType
+                };
+                _db.Set<ContactAddress>().Add(rel);
+                _db.SaveChanges();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                //log exception
+                return false;
             }
         }
 
