@@ -7,7 +7,7 @@ export class AboutController {
             method: 'GET',
             url: 'http://localhost:59649/api/address'
         }).then(function successCallback(response) {
-            $log(response);
+            $log.log(response);
             
             // this callback will be called asynchronously
             // when the response is available
