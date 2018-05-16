@@ -1,0 +1,32 @@
+<div class="container">
+
+  <div>
+    <acme-navbar creation-date="main.creationDate"></acme-navbar>
+  </div>
+
+  <div class="jumbotron ">
+
+    <div class="text-center">
+      <h3>Contact List</h1>
+    </div>
+    <p class="animated infinite">
+      <button type="button" class="btn btn-lg btn-success" ng-click="createNewContact()">Create New Contact</button>
+    </p>
+
+    <table class="table">
+      <tr ng-repeat="x in contactList">
+        <td>{{ x.Version }}</td>
+        <td>{{ x.Title }}</td>
+        <td>{{ x.FirstName }}</td>
+        <td>{{ x.LastName }}</td>
+        <td>{{ x.Email }}</td>
+        <td>{{ x.Id }}</td>
+        <td> <button type="button" class="btn btn-sm btn-success" ng-click="editContact()">Edit</button></td>
+      </tr>
+    </table>
+
+  </div>
+
+
+
+</div>

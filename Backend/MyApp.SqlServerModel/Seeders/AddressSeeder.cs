@@ -18,7 +18,7 @@ namespace MyApp.SqlServerModel.Seeders
                 {
                     Id = 1,
                     City = "Edinburgh",
-                    County = "U.K.",
+                    Country = "U.K.",
                     Line1 = "Line1 x1",
                     Line2 = "Line2 x1",
                     Line3 = "Line3 x1",
@@ -30,7 +30,7 @@ namespace MyApp.SqlServerModel.Seeders
                 {
                     Id = 2,
                     City = "Aberdeen",
-                    County = "U.K.",
+                    Country = "U.K.",
                     Line1 = "Line1 x2",
                     Line2 = "Line2 x2",
                     Line3 = "Line3 x2",

@@ -25,7 +25,7 @@ namespace MyApp.SqlServerModel.Entities
         public string City { get; set; }
 
         [StringLength(50)]
-        public string County { get; set; }
+        public string Country { get; set; }
 
         [StringLength(20)]
         public string PostCode { get; set; }

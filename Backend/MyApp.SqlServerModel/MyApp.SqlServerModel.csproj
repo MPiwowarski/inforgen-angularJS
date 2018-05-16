@@ -63,6 +63,10 @@
     <Compile Include="Migrations\201805152034349_firstMigration.Designer.cs">
       <DependentUpon>201805152034349_firstMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805162104337_address_county_changed_to_country.cs" />
+    <Compile Include="Migrations\201805162104337_address_county_changed_to_country.Designer.cs">
+      <DependentUpon>201805162104337_address_county_changed_to_country.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyAppDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,6 +90,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805152034349_firstMigration.resx">
       <DependentUpon>201805152034349_firstMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805162104337_address_county_changed_to_country.resx">
+      <DependentUpon>201805162104337_address_county_changed_to_country.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

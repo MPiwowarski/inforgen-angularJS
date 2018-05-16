@@ -13,6 +13,25 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       controller: 'AboutController',
       controllerAs: 'about'
     })
+    .state('contactList', {
+      url: '/contactList',
+      templateUrl: 'app/contactList/contactList.html',
+      controller: 'ContactListController',
+      controllerAs: 'contactList'
+    })
+    .state('contactCreate', {
+      url: '/contactCreate',
+      templateUrl: 'app/contactCreate/contactCreate.html',
+      controller: 'ContactCreateController',
+      controllerAs: 'contactCreate'
+    })
+    .state('contactEdit', {
+      url: '/contactEdit/:id',
+      templateUrl: 'app/contactEdit/contactEdit.html',
+      controller: 'ContactEditController',
+      controllerAs: 'contactEdit'
+    })
+    
     ;
 
   $urlRouterProvider.otherwise('/');
