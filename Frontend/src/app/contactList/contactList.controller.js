@@ -33,7 +33,7 @@ export class ContactListController {
       
       $http(req).then(function () {
         $state.reload();
-        //throw popup window
+        //throw popup window "Contact has been deleted successfully."
       }, function () {
 
       });

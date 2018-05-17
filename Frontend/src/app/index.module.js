@@ -11,6 +11,7 @@ import { MalarkeyDirective } from '../app/components/malarkey/malarkey.directive
 import { ContactListController } from './contactList/contactList.controller';
 import { ContactCreateController } from './contactCreate/contactCreate.controller';
 import { ContactEditController } from './contactEdit/contactEdit.controller';
+import { AddressCreateController } from './addressCreate/addressCreate.controller';
 
 angular.module('gulpAngular', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ngResource', 'ui.router', 'ui.bootstrap', 'toastr'])
   .constant('malarkey', malarkey)
@@ -24,5 +25,6 @@ angular.module('gulpAngular', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize'
   .controller('ContactListController', ContactListController)
   .controller('ContactCreateController', ContactCreateController)
   .controller('ContactEditController', ContactEditController)
+  .controller('AddressCreateController', AddressCreateController)
   .directive('acmeNavbar', NavbarDirective)
   .directive('acmeMalarkey', MalarkeyDirective);

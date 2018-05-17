@@ -2,12 +2,11 @@ export class ContactEditController {
     constructor($http, $scope, $log, $stateParams, $location,$state) {
         'ngInject';
 
-        $log.log($stateParams.id);
         this.getContactData($http, $scope, $log, $stateParams.id);
         this.editContact($scope, $http, $location, $log);
 
         this.editAddress($scope, $location);
-        this.addAddress($scope, $location);
+        this.addAddress($scope, $location, $state, $stateParams);
         this.deleteAddress($http, $scope, $log, $state);
     }
 
@@ -65,9 +64,9 @@ export class ContactEditController {
         };
     }
 
-    addAddress($scope, $location) {
-        $scope.createNewContact = function () {
-            $location.path('/addressCreate');
+    addAddress($scope, $location, $state, $stateParams) {
+        $scope.addAddress = function () {
+            $location.path('/contactEdit/addressCreate/' + $stateParams.id);
         };
     }
 

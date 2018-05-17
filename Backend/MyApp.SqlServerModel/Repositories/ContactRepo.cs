@@ -143,27 +143,43 @@ namespace MyApp.SqlServerModel.Repositories
             }
         }
 
-        public bool AddAddress(int contactId, int addressId, AddressTypeEnum addressType)
+        public bool AddAddress(AddAddressToContactDto dto)
         {
-            try
+            using (var dbTran = _db.Database.BeginTransaction())
             {
-                var contact = _db.Contact.First(x => x.Id == contactId);
-                var address = _db.Address.First(x => x.Id == addressId);
-                var rel = new ContactAddress()
+                try
                 {
-                    Address = address,
-                    Contact = contact,
-                    AddressType = addressType
-                };
-                _db.Set<ContactAddress>().Add(rel);
-                _db.SaveChanges();
+                    var contact = _db.Contact.First(x => x.Id == dto.ContactId);
 
-                return true;
-            }
-            catch (Exception ex)
-            {
-                //log exception
-                return false;
+                    var address = new Address()
+                    {
+                        City = dto.City,
+                        PostCode = dto.PostCode,
+                        Country = dto.Country,
+                        Line1 = dto.Line1,
+                        Line2 = dto.Line2,
+                        Line3 = dto.Line3,
+                    };
+                    _db.Address.Add(address);
+
+                    var rel = new ContactAddress()
+                    {
+                        Address = address,
+                        Contact = contact,
+                        AddressType = dto.AddressType
+                    };
+                    _db.Set<ContactAddress>().Add(rel);
+
+                    _db.SaveChanges();
+                    dbTran.Commit();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    dbTran.Rollback();
+                    //log exception
+                    return false;
+                }
             }
         }
 

@@ -1,0 +1,74 @@
+<div class="container">
+  <div>
+    <acme-navbar creation-date="main.creationDate"></acme-navbar>
+  </div>
+
+  <div class="jumbotron text-center">
+    <h3>Add New Address</h1>
+
+      <form name="addressCreateForm" ng-submit="createAddress()">
+        <label>Line1:
+          <input type="text" name="input" ng-model="Line1" ng-trim="false" ng-maxlength="100">
+        </label>
+        <div role="alert">
+          <span class="error" ng-show="addressCreateForm.input.$error.maxlength">
+            Max length can be 100</span>
+        </div>
+
+        <label>Line2:
+          <input type="text" name="input" ng-model="Line2" ng-trim="false" ng-maxlength="100">
+        </label>
+        <div role="alert">
+          <span class="error" ng-show="addressCreateForm.input.$error.maxlength">
+            Max length can be 100</span>
+        </div>
+
+        <label>Line3:
+          <input type="text" name="input" ng-model="Line3" ng-trim="false" ng-maxlength="100">
+        </label>
+        <div role="alert">
+          <span class="error" ng-show="addressCreateForm.input.$error.maxlength">
+            Max length can be 100</span>
+        </div>
+
+        <label>City:
+          <input type="text" name="input" ng-model="City" ng-trim="false" ng-maxlength="50">
+        </label>
+        <div role="alert">
+          <span class="error" ng-show="addressCreateForm.input.$error.maxlength">
+            Max length can be 50</span>
+        </div>
+
+        <label>Country:
+          <input type="text" name="input" ng-model="Country" ng-trim="false" ng-maxlength="50">
+        </label>
+        <div role="alert">
+          <span class="error" ng-show="addressCreateForm.input.$error.maxlength">
+            Max length can be 50</span>
+        </div>
+
+        <label>PostCode:
+          <input type="text" name="input" ng-model="PostCode" ng-trim="false" ng-maxlength="20">
+        </label>
+        <div role="alert">
+          <span class="error" ng-show="addressCreateForm.input.$error.maxlength">
+            Max length can be 20</span>
+        </div>
+
+        <label>Address Type:
+          <select ng-model="AddressType" required>
+            <option ng-repeat="x in addressTypes" value="{{x.number}}">{{x.type}}</option>
+          </select>
+        </label>
+        <div role="alert">
+          <span class="error" ng-show="addressCreateForm.input.$error.required">
+            Required!</span>
+        </div>
+
+
+        <input type="submit" value="Add Address">
+      </form>
+
+  </div>
+
+</div>

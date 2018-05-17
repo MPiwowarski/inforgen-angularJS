@@ -1,7 +1,6 @@
 ﻿using MyApp.SqlServerModel.Dtos;
 using MyApp.SqlServerModel.Entities;
 using MyApp.SqlServerModel.Repositories;
-using MyApp.WebAPI.Models.ContactModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,10 +65,9 @@ namespace MyApp.WebAPI.Controllers
 
         [HttpPost]
         [Route("addAddress")]
-        public IHttpActionResult AddAddress([FromBody]AddAddressViewModel viewModel)
+        public IHttpActionResult AddAddress([FromBody]AddAddressToContactDto dto)
         {
-            _contactRepo.AddAddress(viewModel.ContactId, viewModel.AddressId, viewModel.AddressType);
-            return Ok();
+            return Ok(_contactRepo.AddAddress(dto));
         }
 
     }

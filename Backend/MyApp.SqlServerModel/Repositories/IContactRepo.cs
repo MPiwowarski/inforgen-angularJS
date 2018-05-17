@@ -13,6 +13,6 @@ namespace MyApp.SqlServerModel.Repositories
         ContactDetailsDto FindById(int id);
         ICollection<ContactBasicInfo> GetAll();
         bool Remove(int id);
-        bool AddAddress(int contactId, int addressId, AddressTypeEnum addressType);
+        bool AddAddress(AddAddressToContactDto dto);
     }
 }
