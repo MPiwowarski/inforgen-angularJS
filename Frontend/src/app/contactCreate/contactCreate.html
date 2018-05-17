@@ -1,16 +1,66 @@
 <div class="container">
 
-    <div>
-      <acme-navbar creation-date="main.creationDate"></acme-navbar>
-    </div>
-  
-    <div class="jumbotron text-center">
-      <h3>Create New Contact</h1>
-    
-      
-
-    </div>
-  
-  
+  <div>
+    <acme-navbar creation-date="main.creationDate"></acme-navbar>
   </div>
-  
+
+  <div class="jumbotron text-center">
+    <h3>Create New Contact</h1>
+
+      <form name="contactCreateForm" ng-submit="createContact()">
+        <label>Title:
+          <input type="text" name="input" ng-model="Title" required ng-trim="false" ng-maxlength="50">
+        </label>
+        <div role="alert">
+          <span class="error" ng-show="contactCreateForm.input.$error.required">
+            Required!</span>
+          <span class="error" ng-show="contactCreateForm.input.$error.maxlength">
+            Max length can be 50</span>
+        </div>
+
+        <label>FirstName:
+          <input type="text" name="input" ng-model="FirstName" ng-trim="false" ng-maxlength="100">
+        </label>
+        <div role="alert">
+          <span class="error" ng-show="contactCreateForm.input.$error.maxlength">
+            Max length can be 100</span>
+        </div>
+
+        <label>LastName:
+          <input type="text" name="input" ng-model="LastName" ng-trim="false" ng-maxlength="100">
+        </label>
+        <div role="alert">
+          <span class="error" ng-show="contactCreateForm.input.$error.maxlength">
+            Max length can be 100</span>
+        </div>
+
+        <label>Email:
+          <input type="email" name="input" ng-model="Email" ng-trim="false" ng-maxlength="100">
+        </label>
+        <div role="alert">
+          <span class="error" ng-show="contactCreateForm.input.$error.maxlength">
+            Max length can be 100</span>
+          <span class="error" ng-show="contactCreateForm.input.$error.email">
+            Not valid email!</span>
+        </div>
+
+
+
+        <!-- <code>text = {{example.text}}</code>
+            <br/>
+            <code>contactCreateForm.input.$valid = {{contactCreateForm.input.$valid}}</code>
+            <br/>
+            <code>contactCreateForm.input.$error = {{contactCreateForm.input.$error}}</code>
+            <br/>
+            <code>contactCreateForm.$valid = {{contactCreateForm.$valid}}</code>
+            <br/>
+            <code>contactCreateForm.$error.required = {{!!contactCreateForm.$error.required}}</code>
+            <br/> -->
+
+        <input type="submit" value="Create Contact" >
+      </form>
+
+  </div>
+
+
+</div>

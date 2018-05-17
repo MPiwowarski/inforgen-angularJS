@@ -7,12 +7,6 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       controller: 'MainController',
       controllerAs: 'main'
     })
-    .state('about', {
-      url: '/about',
-      templateUrl: 'app/about/about.html',
-      controller: 'AboutController',
-      controllerAs: 'about'
-    })
     .state('contactList', {
       url: '/contactList',
       templateUrl: 'app/contactList/contactList.html',

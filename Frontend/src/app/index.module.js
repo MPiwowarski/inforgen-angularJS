@@ -8,7 +8,6 @@ import { GithubContributorService } from '../app/components/githubContributor/gi
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
 import { NavbarDirective } from '../app/components/navbar/navbar.directive';
 import { MalarkeyDirective } from '../app/components/malarkey/malarkey.directive';
-import { AboutController } from './about/about.controller';
 import { ContactListController } from './contactList/contactList.controller';
 import { ContactCreateController } from './contactCreate/contactCreate.controller';
 import { ContactEditController } from './contactEdit/contactEdit.controller';
@@ -22,7 +21,6 @@ angular.module('gulpAngular', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize'
   .service('githubContributor', GithubContributorService)
   .service('webDevTec', WebDevTecService)
   .controller('MainController', MainController)
-  .controller('AboutController', AboutController)
   .controller('ContactListController', ContactListController)
   .controller('ContactCreateController', ContactCreateController)
   .controller('ContactEditController', ContactEditController)

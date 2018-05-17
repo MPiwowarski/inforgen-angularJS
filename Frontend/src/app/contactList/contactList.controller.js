@@ -3,16 +3,20 @@ export class ContactListController {
     'ngInject';
 
     this.getContacts($http, $scope, $log);
+    this.createNewContact($scope, $location);
+    this.editContact($scope, $location);
+  }
 
+  editContact($scope, $location) {
+    $scope.editContact = function (id) {
+      $location.path('/contactEdit/' + id);
+    };
+  }
+
+  createNewContact($scope, $location) {
     $scope.createNewContact = function () {
-      $log.log('createNewContact click');
-    }
-
-    $scope.editContact = function () {
-      $log.log('editContact click');
-      $location.path('/contactEdit/' + 1);
-    }
-
+      $location.path('/contactCreate');
+    };
   }
 
   getContacts($http, $scope, $log) {
@@ -25,5 +29,5 @@ export class ContactListController {
     });
   }
 
- 
+
 }
