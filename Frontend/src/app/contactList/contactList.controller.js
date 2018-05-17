@@ -1,11 +1,11 @@
 export class ContactListController {
-  constructor($http, $scope, $log, $location, $state) {
+  constructor($http, $scope, $location, $state) {
     'ngInject';
 
-    this.getContacts($http, $scope, $log);
+    this.getContacts($http, $scope);
     this.createNewContact($scope, $location);
     this.editContact($scope, $location);
-    this.deleteContact($http, $scope, $log, $state);
+    this.deleteContact($http, $scope, $state);
     this.contactDetails($scope, $location);
   }
 
@@ -27,7 +27,7 @@ export class ContactListController {
     };
   }
 
-  deleteContact($http, $scope, $log,$state) {
+  deleteContact($http, $scope,$state) {
     $scope.deleteContact = function (id) {
       var req = {
         method: 'POST',
@@ -47,7 +47,7 @@ export class ContactListController {
     };
   }
 
-  getContacts($http, $scope, $log) {
+  getContacts($http, $scope) {
     $http({
       method: 'GET',
       url: 'http://localhost:59649/api/contact'

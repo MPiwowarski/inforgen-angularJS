@@ -1,5 +1,5 @@
 export class ContactDetailsController {
-    constructor($http, $scope, $log, $stateParams, $location, $state) {
+    constructor($http, $scope, $log, $stateParams) {
         'ngInject';
 
         this.getContactData($http, $scope, $log, $stateParams.id);

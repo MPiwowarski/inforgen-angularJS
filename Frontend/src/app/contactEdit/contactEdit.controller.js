@@ -43,7 +43,7 @@ export class ContactEditController {
                         Title: $scope.Title,
                         FirstName: $scope.FirstName,
                         LastName: $scope.LastName,
-                        Email: $scope.Email,
+                        Email: $scope.Email
                     }
                 };
                 $http(req).then(function () {
