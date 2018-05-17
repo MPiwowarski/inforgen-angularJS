@@ -37,6 +37,12 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       controller: 'AddressCreateController',
       controllerAs: 'addressCreate'
     })
+    .state('contactDetails', {
+      url: '/contactDetails/:id',
+      templateUrl: 'app/contactDetails/contactDetails.html',
+      controller: 'ContactDetailsController',
+      controllerAs: 'contactDetails'
+    })
     ;
 
   $urlRouterProvider.otherwise('/');

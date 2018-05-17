@@ -1,13 +1,1 @@
 
-export class AddressCreateController {
-    constructor($scope, $http, $log, $location) {
-      'ngInject';
-  
-      this.createAddress($scope, $http, $location, $log);
-  
-      $scope.addressTypes = [
-        { number: 0, type: "Type1" },
-        { number: 1, type: "Type2" },
-        { number: 2, type: "Type3" }
-      ];
-    }

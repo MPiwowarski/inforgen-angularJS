@@ -12,6 +12,7 @@ import { ContactListController } from './contactList/contactList.controller';
 import { ContactCreateController } from './contactCreate/contactCreate.controller';
 import { ContactEditController } from './contactEdit/contactEdit.controller';
 import { AddressCreateController } from './addressCreate/addressCreate.controller';
+import { ContactDetailsController } from './contactDetails/contactDetails.controller';
 
 angular.module('gulpAngular', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ngResource', 'ui.router', 'ui.bootstrap', 'toastr'])
   .constant('malarkey', malarkey)
@@ -26,5 +27,6 @@ angular.module('gulpAngular', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize'
   .controller('ContactCreateController', ContactCreateController)
   .controller('ContactEditController', ContactEditController)
   .controller('AddressCreateController', AddressCreateController)
+  .controller('ContactDetailsController', ContactDetailsController)
   .directive('acmeNavbar', NavbarDirective)
   .directive('acmeMalarkey', MalarkeyDirective);

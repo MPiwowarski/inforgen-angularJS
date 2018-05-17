@@ -6,11 +6,18 @@ export class ContactListController {
     this.createNewContact($scope, $location);
     this.editContact($scope, $location);
     this.deleteContact($http, $scope, $log, $state);
+    this.contactDetails($scope, $location);
   }
 
   editContact($scope, $location) {
     $scope.editContact = function (id) {
       $location.path('/contactEdit/' + id);
+    };
+  }
+
+  contactDetails($scope, $location) {
+    $scope.contactDetails = function (id) {
+      $location.path('/contactDetails/' + id);
     };
   }
 

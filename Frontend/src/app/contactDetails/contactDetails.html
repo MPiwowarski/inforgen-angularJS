@@ -1,0 +1,73 @@
+<div class="container">
+
+    <div>
+        <acme-navbar creation-date="main.creationDate"></acme-navbar>
+    </div>
+
+    <div class="jumbotron text-center">
+        <h3>Contact Details</h1>
+
+            <p>Title: {{Title}}
+            </p>
+            
+
+            <p>FirstName: {{FirstName}}
+            </p>
+
+            <p>LastName: {{LastName}}
+            </p>
+
+            <p>Email: {{Email}}
+            </p>
+
+            <div>
+
+                <h3>Allocated Addresses</h3>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>
+                                <b>Version </b>
+                            </td>
+                            <td>
+                                <b>Line1</b>
+                            </td>
+                            <td>
+                                <b>Line2</b>
+                            </td>
+                            <td>
+                                <b>Line3</b>
+                            </td>
+                            <td>
+                                <b>City</b>
+                            </td>
+                            <td>
+                                <b>Country</b>
+                            </td>
+                            <td>
+                                <b>PostCode</b>
+                            </td>
+                            <td>
+                                <b>AddressType</b>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="x in Addresses">
+                            <td>{{ x.Version }}</td>
+                            <td>{{ x.Line1 }}</td>
+                            <td>{{ x.Line2 }}</td>
+                            <td>{{ x.Line3 }}</td>
+                            <td>{{ x.City }}</td>
+                            <td>{{ x.Country }}</td>
+                            <td>{{ x.PostCode }}</td>
+                            <td>{{ x.AddressType }}</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    </div>
+
+</div>
