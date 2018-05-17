@@ -13,6 +13,8 @@
       <button type="button" class="btn btn-lg btn-success" ng-click="createNewContact()">Create New Contact</button>
     </p>
 
+    <p><input type="text" ng-model="filterText"></p>
+
     <table class="table">
       <thead>
         <tr>
@@ -35,7 +37,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="x in contactList">
+        <tr ng-repeat="x in contactList | filter:filterText">
           <td>{{ x.Version }}</td>
           <td>{{ x.Title }}</td>
           <td>{{ x.FirstName }}</td>
