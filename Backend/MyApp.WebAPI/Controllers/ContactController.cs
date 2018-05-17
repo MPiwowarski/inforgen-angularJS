@@ -50,8 +50,9 @@ namespace MyApp.WebAPI.Controllers
             _contactRepo.Update(value);
         }
 
-        // DELETE api/values/5
-        public void Delete(int id)
+        [HttpPost]
+        [Route("delete")]
+        public void Delete([FromBody]int id)
         {
             _contactRepo.Remove(id);
         }
