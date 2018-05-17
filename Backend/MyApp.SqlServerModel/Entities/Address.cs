@@ -37,7 +37,7 @@ namespace MyApp.SqlServerModel.Entities
         [StringLength(20)]
         public string PostCode { get; set; }
 
-        public ICollection<ContactAddress> ContactAddresses { get; set; }
+        public virtual ICollection<ContactAddress> ContactAddresses { get; set; }
 
     }
 }

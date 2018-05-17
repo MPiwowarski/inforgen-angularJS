@@ -43,14 +43,16 @@ namespace MyApp.WebAPI.Controllers
             _addressRepo.Create(value);
         }
 
-        // PUT api/values/5
-        public void Put([FromBody]Address value)
+        [HttpPatch]
+        [Route("edit")]
+        public void Patch([FromBody]Address value)
         {
             _addressRepo.Update(value);
         }
 
-        // DELETE api/values/5
-        public void Delete(int id)
+        [HttpPost]
+        [Route("delete")]
+        public void Delete([FromBody]int id)
         {
             _addressRepo.Remove(id);
         }

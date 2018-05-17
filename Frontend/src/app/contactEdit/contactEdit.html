@@ -1,58 +1,104 @@
 <div class="container">
 
-        <div>
-          <acme-navbar creation-date="main.creationDate"></acme-navbar>
-        </div>
-      
-        <div class="jumbotron text-center">
-          <h3>Edit Contact</h1>
-      
+    <div>
+        <acme-navbar creation-date="main.creationDate"></acme-navbar>
+    </div>
+
+    <div class="jumbotron text-center">
+        <h3>Edit Contact</h1>
+
             <form name="contactEditForm" ng-submit="editContact()">
-              <label>Title:
-                <input type="text" name="input" ng-model="Title" required ng-trim="false" ng-maxlength="50">
-              </label>
-              <div role="alert">
-                <span class="error" ng-show="contactEditForm.input.$error.required">
-                  Required!</span>
-                <span class="error" ng-show="contactEditForm.input.$error.maxlength">
-                  Max length can be 50</span>
-              </div>
-      
-              <label>FirstName:
-                <input type="text" name="input" ng-model="FirstName" ng-trim="false" ng-maxlength="100">
-              </label>
-              <div role="alert">
-                <span class="error" ng-show="contactEditForm.input.$error.maxlength">
-                  Max length can be 100</span>
-              </div>
-      
-              <label>LastName:
-                <input type="text" name="input" ng-model="LastName" ng-trim="false" ng-maxlength="100">
-              </label>
-              <div role="alert">
-                <span class="error" ng-show="contactEditForm.input.$error.maxlength">
-                  Max length can be 100</span>
-              </div>
-      
-              <label>Email:
-                <input type="email" name="input" ng-model="Email" ng-trim="false" ng-maxlength="100">
-              </label>
-              <div role="alert">
-                <span class="error" ng-show="contactEditForm.input.$error.maxlength">
-                  Max length can be 100</span>
-                <span class="error" ng-show="contactEditForm.input.$error.email">
-                  Not valid email!</span>
-              </div>
-      
-              <input type="submit" value="Update" >
+                <label>Title:
+                    <input type="text" name="input" ng-model="Title" required ng-trim="false" ng-maxlength="50">
+                </label>
+                <div role="alert">
+                    <span class="error" ng-show="contactEditForm.input.$error.required">
+                        Required!</span>
+                    <span class="error" ng-show="contactEditForm.input.$error.maxlength">
+                        Max length can be 50</span>
+                </div>
+
+                <label>FirstName:
+                    <input type="text" name="input" ng-model="FirstName" ng-trim="false" ng-maxlength="100">
+                </label>
+                <div role="alert">
+                    <span class="error" ng-show="contactEditForm.input.$error.maxlength">
+                        Max length can be 100</span>
+                </div>
+
+                <label>LastName:
+                    <input type="text" name="input" ng-model="LastName" ng-trim="false" ng-maxlength="100">
+                </label>
+                <div role="alert">
+                    <span class="error" ng-show="contactEditForm.input.$error.maxlength">
+                        Max length can be 100</span>
+                </div>
+
+                <label>Email:
+                    <input type="email" name="input" ng-model="Email" ng-trim="false" ng-maxlength="100">
+                </label>
+                <div role="alert">
+                    <span class="error" ng-show="contactEditForm.input.$error.maxlength">
+                        Max length can be 100</span>
+                    <span class="error" ng-show="contactEditForm.input.$error.email">
+                        Not valid email!</span>
+                </div>
+
+                <input type="submit" value="Update">
             </form>
-      
+
             <div>
 
                 <h3>Allocated Addresses</h3>
-
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>
+                                <b>Version </b>
+                            </td>
+                            <td>
+                                <b>Line1</b>
+                            </td>
+                            <td>
+                                <b>Line2</b>
+                            </td>
+                            <td>
+                                <b>Line3</b>
+                            </td>
+                            <td>
+                                <b>City</b>
+                            </td>
+                            <td>
+                                <b>Country</b>
+                            </td>
+                            <td>
+                                <b>PostCode</b>
+                            </td>
+                            <td>
+                                <b>AddressType</b>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="x in Addresses">
+                            <td>{{ x.Version }}</td>
+                            <td>{{ x.Line1 }}</td>
+                            <td>{{ x.Line2 }}</td>
+                            <td>{{ x.Line3 }}</td>
+                            <td>{{ x.City }}</td>
+                            <td>{{ x.Country }}</td>
+                            <td>{{ x.PostCode }}</td>
+                            <td>{{ x.AddressType }}</td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-danger" ng-click="deleteAddress(x.Id);">Delete</button>
+                                <button type="button" class="btn btn-sm btn-success" ng-click="editAddress(x.Id)">Edit</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
             </div>
-        </div>
-      
-      </div>
+    </div>
+
+</div>

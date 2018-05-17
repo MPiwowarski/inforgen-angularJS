@@ -20,7 +20,14 @@ namespace MyApp.SqlServerModel.Seeders
                     AddressId = 1,
                     ContactId = 2,
                     AddressType = DataStructure.AddressTypeEnum.Type1
-                }
+                },
+                 new ContactAddress
+                 {
+                     Id = 2,
+                     AddressId = 2,
+                     ContactId = 2,
+                     AddressType = DataStructure.AddressTypeEnum.Type3
+                 }
             );
             db.SaveChanges();
 

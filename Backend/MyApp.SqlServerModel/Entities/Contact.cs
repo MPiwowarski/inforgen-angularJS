@@ -31,6 +31,6 @@ namespace MyApp.SqlServerModel.Entities
         [StringLength(100)]
         public string Email { get; set; }
 
-        public ICollection<ContactAddress> ContactAddresses { get; set; }
+        public virtual ICollection<ContactAddress> ContactAddresses { get; set; }
     }
 }

@@ -56,7 +56,7 @@ namespace MyApp.SqlServerModel.Repositories
         {
             try
             {
-                Contact entity = FindById(id);
+                Contact entity = _db.Contact.Find(id);
                 _db.Set<Contact>().Remove(entity);
                 _db.SaveChanges();
                 return true;
@@ -68,11 +68,45 @@ namespace MyApp.SqlServerModel.Repositories
             }
         }
 
-        public Contact FindById(int id)
+        public ContactDetailsDto FindById(int id)
         {
             try
             {
-                return _db.Set<Contact>().Find(id);
+                var contact = _db.Set<Contact>().First(x => x.Id == id);
+                var contactAddressIds = contact.ContactAddresses.Select(y => y.AddressId).ToList();
+                var addresses = _db.Address.Where(x => contactAddressIds.Contains(x.Id)).ToList();
+
+                var addressListDto = new List<AddressDtoDetails>();
+                foreach (var adr in contact.ContactAddresses)
+                {
+                    var address = addresses.First(x => x.Id == adr.Id);
+                    var adrDto = new AddressDtoDetails()
+                    {
+                        AddressType = adr.AddressType,
+                        Id = address.Id,
+                        City = address.City,
+                        Country = address.Country,
+                        Line1 = address.Line1,
+                        Line2 = address.Line2,
+                        Line3 = address.Line3,
+                        PostCode = address.PostCode,
+                        Version = address.Version
+                    };
+                    addressListDto.Add(adrDto);
+                }
+
+                var contactDetails = new ContactDetailsDto()
+                {
+                    Id = contact.Id,
+                    Email = contact.Email,
+                    FirstName = contact.Email,
+                    LastName = contact.LastName,
+                    Title = contact.Title,
+                    Version = contact.Version,
+                    Addresses = addressListDto
+                };
+
+                return contactDetails;
             }
             catch (Exception ex)
             {
@@ -81,11 +115,26 @@ namespace MyApp.SqlServerModel.Repositories
             }
         }
 
-        public ICollection<Contact> GetAll()
+        public ICollection<ContactBasicInfo> GetAll()
         {
             try
             {
-                return _db.Set<Contact>().ToList();
+                var contacts = _db.Set<Contact>().AsNoTracking().ToList();
+                var result = new List<ContactBasicInfo>();
+                foreach (var item in contacts)
+                {
+                    var con = new ContactBasicInfo()
+                    {
+                        Id = item.Id,
+                        Email = item.Email,
+                        FirstName = item.FirstName,
+                        LastName = item.LastName,
+                        Title = item.Title,
+                        Version = item.Version
+                    };
+                    result.Add(con);
+                }
+                return result;
             }
             catch (Exception ex)
             {

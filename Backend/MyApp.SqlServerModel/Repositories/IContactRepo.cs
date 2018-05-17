@@ -10,8 +10,8 @@ namespace MyApp.SqlServerModel.Repositories
     {
         Contact Create(Contact entity);
         Task<Contact> Update(ContactUpdateDto entity);
-        Contact FindById(int id);
-        ICollection<Contact> GetAll();
+        ContactDetailsDto FindById(int id);
+        ICollection<ContactBasicInfo> GetAll();
         bool Remove(int id);
         bool AddAddress(int contactId, int addressId, AddressTypeEnum addressType);
     }

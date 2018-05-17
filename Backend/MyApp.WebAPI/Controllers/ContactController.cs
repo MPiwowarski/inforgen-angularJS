@@ -28,16 +28,17 @@ namespace MyApp.WebAPI.Controllers
         }
 
         // GET api/values
-        public IEnumerable<Contact> Get()
+        public IEnumerable<ContactBasicInfo> Get()
         {
             var result = _contactRepo.GetAll();
             return result;
         }
 
         // GET api/values/5
-        public Contact Get(int id)
+        public ContactDetailsDto Get(int id)
         {
-            return _contactRepo.FindById(id);
+            var result = _contactRepo.FindById(id);
+            return result;
         }
 
         // POST api/values
@@ -49,7 +50,7 @@ namespace MyApp.WebAPI.Controllers
 
         [HttpPatch]
         [Route("edit")]
-        public async Task<IHttpActionResult> Put([FromBody]ContactUpdateDto value)
+        public async Task<IHttpActionResult> Patch([FromBody]ContactUpdateDto value)
         {
             await _contactRepo.Update(value);
             return Ok();
