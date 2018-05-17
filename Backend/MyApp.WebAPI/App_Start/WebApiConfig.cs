@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Configuration;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -11,7 +12,7 @@ namespace MyApp.WebAPI
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-            var cors = new EnableCorsAttribute("http://localhost:59649", "*", "*");
+            var cors = new EnableCorsAttribute(WebConfigurationManager.AppSettings["appUrl"], "*", "*");
             config.EnableCors(cors);
 
 
