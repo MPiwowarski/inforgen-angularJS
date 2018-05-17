@@ -1,4 +1,5 @@
 ﻿using MyApp.SqlServerModel.DataStructure;
+using MyApp.SqlServerModel.Dtos;
 using MyApp.SqlServerModel.Entities;
 using System;
 using System.Collections.Generic;
@@ -32,13 +33,17 @@ namespace MyApp.SqlServerModel.Repositories
             }
         }
 
-        public Contact Update(Contact entity)
+        public async Task<Contact> Update(ContactUpdateDto entity)
         {
             try
             {
-                _db.Entry(entity).CurrentValues.SetValues(entity);
-                _db.SaveChanges();
-                return entity;
+                var contact = await _db.Contact.FindAsync(entity.Id);
+                contact.Title = entity.Title;
+                contact.FirstName = entity.FirstName;
+                contact.LastName = entity.LastName;
+                contact.Email = entity.Email;
+                await _db.SaveChangesAsync();
+                return contact;
             }
             catch (Exception ex)
             {

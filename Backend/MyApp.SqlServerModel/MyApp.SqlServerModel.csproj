@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataStructure\AddressTypeEnum.cs" />
+    <Compile Include="Dtos\ContactUpdateDto.cs" />
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\ContactAddress.cs" />

@@ -1,4 +1,5 @@
-﻿using MyApp.SqlServerModel.Entities;
+﻿using MyApp.SqlServerModel.Dtos;
+using MyApp.SqlServerModel.Entities;
 using MyApp.SqlServerModel.Repositories;
 using MyApp.WebAPI.Models.ContactModels;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace MyApp.WebAPI.Controllers
@@ -39,29 +41,34 @@ namespace MyApp.WebAPI.Controllers
         }
 
         // POST api/values
-        public void Post([FromBody]Contact value)
+        public IHttpActionResult Post([FromBody]Contact value)
         {
             _contactRepo.Create(value);
+            return Ok();
         }
 
-        // PUT api/values/5
-        public void Put([FromBody]Contact value)
+        [HttpPatch]
+        [Route("edit")]
+        public async Task<IHttpActionResult> Put([FromBody]ContactUpdateDto value)
         {
-            _contactRepo.Update(value);
+            await _contactRepo.Update(value);
+            return Ok();
         }
 
         [HttpPost]
         [Route("delete")]
-        public void Delete([FromBody]int id)
+        public IHttpActionResult Delete([FromBody]int id)
         {
             _contactRepo.Remove(id);
+            return Ok();
         }
 
         [HttpPost]
         [Route("addAddress")]
-        public void AddAddress([FromBody]AddAddressViewModel viewModel)
+        public IHttpActionResult AddAddress([FromBody]AddAddressViewModel viewModel)
         {
             _contactRepo.AddAddress(viewModel.ContactId, viewModel.AddressId, viewModel.AddressType);
+            return Ok();
         }
 
     }

@@ -1,42 +1,58 @@
 <div class="container">
 
-    <div>
-        <acme-navbar creation-date="main.creationDate"></acme-navbar>
-    </div>
-
-    <div class="jumbotron text-center">
-
-        <h3>Contact Edit</h3>
-        <p>Version: {{contactData.Version}}</p>
-        <p>Title: {{contactData.Title}}</p>
-        <p>FirstName: {{contactData.FirstName}}</p>
-        <p>LastName: {{contactData.LastName}}</p>
-        <p>Email: {{contactData.Email}}</p>
-
-    </div>
-
-    <form name="myForm">
-        <label>Title:
-            <input type="text" name="input" ng-model="contactData.Title" ng-pattern="example.word" required ng-trim="false" ng-maxlength="2">
-        </label>
-        <div role="alert">
-            <span class="error" ng-show="myForm.input.$error.required">
-                Required!</span>
-            <span class="error" ng-show="myForm.input.$error.pattern">
-                Single word only!</span>
-            <span class="error" ng-show="myForm.input.$error.maxlength">
-                Max length can be 2</span>
+        <div>
+          <acme-navbar creation-date="main.creationDate"></acme-navbar>
         </div>
+      
+        <div class="jumbotron text-center">
+          <h3>Edit Contact</h1>
+      
+            <form name="contactEditForm" ng-submit="editContact()">
+              <label>Title:
+                <input type="text" name="input" ng-model="Title" required ng-trim="false" ng-maxlength="50">
+              </label>
+              <div role="alert">
+                <span class="error" ng-show="contactEditForm.input.$error.required">
+                  Required!</span>
+                <span class="error" ng-show="contactEditForm.input.$error.maxlength">
+                  Max length can be 50</span>
+              </div>
+      
+              <label>FirstName:
+                <input type="text" name="input" ng-model="FirstName" ng-trim="false" ng-maxlength="100">
+              </label>
+              <div role="alert">
+                <span class="error" ng-show="contactEditForm.input.$error.maxlength">
+                  Max length can be 100</span>
+              </div>
+      
+              <label>LastName:
+                <input type="text" name="input" ng-model="LastName" ng-trim="false" ng-maxlength="100">
+              </label>
+              <div role="alert">
+                <span class="error" ng-show="contactEditForm.input.$error.maxlength">
+                  Max length can be 100</span>
+              </div>
+      
+              <label>Email:
+                <input type="email" name="input" ng-model="Email" ng-trim="false" ng-maxlength="100">
+              </label>
+              <div role="alert">
+                <span class="error" ng-show="contactEditForm.input.$error.maxlength">
+                  Max length can be 100</span>
+                <span class="error" ng-show="contactEditForm.input.$error.email">
+                  Not valid email!</span>
+              </div>
+      
+              <input type="submit" value="Update" >
+            </form>
+      
+            <div>
 
-        <code>text = {{example.text}}</code>
-        <br/>
-        <code>myForm.input.$valid = {{myForm.input.$valid}}</code>
-        <br/>
-        <code>myForm.input.$error = {{myForm.input.$error}}</code>
-        <br/>
-        <code>myForm.$valid = {{myForm.$valid}}</code>
-        <br/>
-        <code>myForm.$error.required = {{!!myForm.$error.required}}</code>
-        <br/>
-    </form>
-</div>
+                <h3>Allocated Addresses</h3>
+
+
+            </div>
+        </div>
+      
+      </div>
