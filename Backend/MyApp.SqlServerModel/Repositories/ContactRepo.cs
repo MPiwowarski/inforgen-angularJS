@@ -21,8 +21,9 @@ namespace MyApp.SqlServerModel.Repositories
         {
             try
             {
-                return _db.Set<Contact>().Add(entity);
+                _db.Set<Contact>().Add(entity);
                 _db.SaveChanges();
+                return entity;
             }
             catch (Exception ex)
             {

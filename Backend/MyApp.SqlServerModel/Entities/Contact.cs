@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyApp.SqlServerModel.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -9,10 +10,15 @@ namespace MyApp.SqlServerModel.Entities
 {
     public class Contact: BaseEntity
     {
-        [Timestamp]
-        public byte[] Version { get; set; }
+        public Contact()
+        {
+            Version = TimestampHelper.Generate();
+        }
 
         [Required]
+        [Timestamp]
+        public byte[] Version { get; set; }
+     
         [StringLength(50)]
         public string Title { get; set; }
 

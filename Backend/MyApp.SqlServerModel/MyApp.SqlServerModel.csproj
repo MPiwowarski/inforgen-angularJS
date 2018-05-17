@@ -67,6 +67,10 @@
     <Compile Include="Migrations\201805162104337_address_county_changed_to_country.Designer.cs">
       <DependentUpon>201805162104337_address_county_changed_to_country.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805171007573_title_not_required_in_contact.cs" />
+    <Compile Include="Migrations\201805171007573_title_not_required_in_contact.Designer.cs">
+      <DependentUpon>201805171007573_title_not_required_in_contact.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyAppDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805162104337_address_county_changed_to_country.resx">
       <DependentUpon>201805162104337_address_county_changed_to_country.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805171007573_title_not_required_in_contact.resx">
+      <DependentUpon>201805171007573_title_not_required_in_contact.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
