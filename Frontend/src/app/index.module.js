@@ -13,6 +13,7 @@ import { ContactCreateController } from './contactCreate/contactCreate.controlle
 import { ContactEditController } from './contactEdit/contactEdit.controller';
 import { AddressCreateController } from './addressCreate/addressCreate.controller';
 import { ContactDetailsController } from './contactDetails/contactDetails.controller';
+import { ConfigurationService } from './configurationService';
 
 angular.module('gulpAngular', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ngResource', 'ui.router', 'ui.bootstrap', 'toastr'])
   .constant('malarkey', malarkey)
@@ -22,6 +23,7 @@ angular.module('gulpAngular', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize'
   .run(runBlock)
   .service('githubContributor', GithubContributorService)
   .service('webDevTec', WebDevTecService)
+  .service('configurationService', ConfigurationService)
   .controller('MainController', MainController)
   .controller('ContactListController', ContactListController)
   .controller('ContactCreateController', ContactCreateController)

@@ -1,6 +1,15 @@
 export class ContactListController {
-  constructor($http, $scope, $location, $state) {
+  constructor($http, $scope, $location, $state, configurationService) {
     'ngInject';
+
+    configurationService.configurationService()
+    .init()
+    .then(config => {
+      console.log(config.appUrl);
+    })
+    .catch(err => {
+      console.log('fail'+ err);
+    })
 
     this.getContacts($http, $scope);
     this.createNewContact($scope, $location);
@@ -27,7 +36,7 @@ export class ContactListController {
     };
   }
 
-  deleteContact($http, $scope,$state) {
+  deleteContact($http, $scope, $state) {
     $scope.deleteContact = function (id) {
       var req = {
         method: 'POST',
@@ -35,9 +44,9 @@ export class ContactListController {
         headers: {
           'Content-Type': 'application/json'
         },
-        data:id
+        data: id
       }
-      
+
       $http(req).then(function () {
         $state.reload();
         //throw popup window "Contact has been deleted successfully."
