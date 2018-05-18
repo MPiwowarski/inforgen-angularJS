@@ -1,4 +1,5 @@
 "# inforgen" 
+Description of the quick configuration of the development environment
 
 1. Creation of the database.
 * Open backend project in the Visual Studio
@@ -15,5 +16,5 @@ If no then check if your connections string in .config file is ok.
 3. Run the Web UI
 * Open cmder and go to the directory of the frontend folder
 * Type command: npm install
-* Then typ command: bower install
+* Then type command: bower install
 * To run the web ui type command: gulp serve
