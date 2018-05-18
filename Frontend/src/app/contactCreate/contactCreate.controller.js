@@ -1,16 +1,24 @@
 export class ContactCreateController {
-  constructor($scope, $http, $log, $location) {
+  constructor($scope, $http, $log, $location, configurationService) {
     'ngInject';
 
-    this.createContact($scope, $http, $location, $log);
+    configurationService.configurationService()
+        .init()
+        .then(config => {
+            var appUrl = config.appUrl;
+            this.createContact($scope, $http, $location, $log, appUrl);
+        })
+        .catch(err => {
+            $log.log('fail'+ err);
+        })
   }
 
-  createContact($scope, $http, $location, $log) {
+  createContact($scope, $http, $location, $log, appUrl) {
     $scope.createContact = function () {
       if ($scope.contactCreateForm.$valid) {
         var req = {
           method: 'POST',
-          url: 'http://localhost:59649/api/contact',
+          url: appUrl + '/api/contact',
           headers: {
             'Content-Type': 'application/json'
           },

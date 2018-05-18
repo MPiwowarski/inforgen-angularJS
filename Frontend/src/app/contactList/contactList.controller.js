@@ -1,21 +1,21 @@
 export class ContactListController {
-  constructor($http, $scope, $location, $state, configurationService) {
+  constructor($http, $scope, $location, $state, configurationService,$log) {
     'ngInject';
 
     configurationService.configurationService()
     .init()
     .then(config => {
-      console.log(config.appUrl);
+      var appUrl = config.appUrl;
+      this.getContacts($http, $scope, appUrl);
+      this.createNewContact($scope, $location);
+      this.editContact($scope, $location);
+      this.deleteContact($http, $scope, $state, appUrl);
+      this.contactDetails($scope, $location);
     })
     .catch(err => {
-      console.log('fail'+ err);
+      $log.log('fail'+ err);
     })
 
-    this.getContacts($http, $scope);
-    this.createNewContact($scope, $location);
-    this.editContact($scope, $location);
-    this.deleteContact($http, $scope, $state);
-    this.contactDetails($scope, $location);
   }
 
   editContact($scope, $location) {
@@ -36,11 +36,11 @@ export class ContactListController {
     };
   }
 
-  deleteContact($http, $scope, $state) {
+  deleteContact($http, $scope, $state,appUrl) {
     $scope.deleteContact = function (id) {
       var req = {
         method: 'POST',
-        url: 'http://localhost:59649/api/contact/delete',
+        url: appUrl+'/api/contact/delete',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -56,10 +56,10 @@ export class ContactListController {
     };
   }
 
-  getContacts($http, $scope) {
+  getContacts($http, $scope, appUrl) {
     $http({
       method: 'GET',
-      url: 'http://localhost:59649/api/contact'
+      url: appUrl+'/api/contact'
     }).then(function successCallback(response) {
       $scope.contactList = response.data;
     }, function errorCallback() {

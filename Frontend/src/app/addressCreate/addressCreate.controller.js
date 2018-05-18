@@ -1,9 +1,18 @@
 export class AddressCreateController {
-  constructor($scope, $http, $log, $location, $stateParams) {
+  constructor($scope, $http, $log, $location, $stateParams, configurationService) {
     'ngInject';
 
     $log.log($stateParams);
-    this.createAddress($scope, $http, $location, $log, $stateParams);
+  
+    configurationService.configurationService()
+    .init()
+    .then(config => {
+        var appUrl = config.appUrl;
+        this.createAddress($scope, $http, $location, $log, $stateParams, appUrl);
+    })
+    .catch(err => {
+        $log.log('fail'+ err);
+    })
 
     $scope.addressTypes = [
       { number: 0, type: "Type1" },
@@ -12,12 +21,12 @@ export class AddressCreateController {
     ];
   }
 
-  createAddress($scope, $http, $location, $log, $stateParams) {
+  createAddress($scope, $http, $location, $log, $stateParams, appUrl) {
     $scope.createAddress = function () {
       if ($scope.addressCreateForm.$valid) {
         var req = {
           method: 'POST',
-          url: 'http://localhost:59649/api/contact/AddAddress',
+          url: appUrl + '/api/contact/AddAddress',
           headers: {
             'Content-Type': 'application/json'
           },

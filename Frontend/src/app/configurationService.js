@@ -1,4 +1,3 @@
-
 export class ConfigurationService {
     constructor() {
 
@@ -7,7 +6,7 @@ export class ConfigurationService {
     configurationService() {
         var configurationObject = {};
         function init() {
-            const configRequest = new Request('assets/config.json');
+            const configRequest = new Request('config.json');
             
             return fetch(configRequest)
                     .then(response => {

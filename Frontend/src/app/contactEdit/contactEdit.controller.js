@@ -1,19 +1,27 @@
 export class ContactEditController {
-    constructor($http, $scope, $log, $stateParams, $location,$state) {
+    constructor($http, $scope, $log, $stateParams, $location,$state, configurationService) {
         'ngInject';
 
-        this.getContactData($http, $scope, $log, $stateParams.id);
-        this.editContact($scope, $http, $location, $log);
+        configurationService.configurationService()
+        .init()
+        .then(config => {
+            var appUrl = config.appUrl;
+            this.getContactData($http, $scope, $log, $stateParams.id, appUrl);
+            this.editContact($scope, $http, $location, $log, appUrl);
+            this.editAddress($scope, $location);
+            this.addAddress($scope, $location, $state, $stateParams);
+            this.deleteAddress($http, $scope, $log, $state);
+        })
+        .catch(err => {
+            $log.log('fail'+ err);
+        })
 
-        this.editAddress($scope, $location);
-        this.addAddress($scope, $location, $state, $stateParams);
-        this.deleteAddress($http, $scope, $log, $state);
     }
 
-    getContactData($http, $scope, $log, id) {
+    getContactData($http, $scope, $log, id, appUrl) {
         $http({
             method: 'GET',
-            url: 'http://localhost:59649/api/contact/' + id
+            url: appUrl + '/api/contact/' + id
         }).then(function successCallback(response) {
 
             $scope.Id = response.data.Id;
@@ -29,12 +37,12 @@ export class ContactEditController {
         });
     }
 
-    editContact($scope, $http, $location, $log) {
+    editContact($scope, $http, $location, $log, appUrl) {
         $scope.editContact = function () {
             if ($scope.contactEditForm.$valid) {
                 var req = {
                     method: 'PATCH',
-                    url: 'http://localhost:59649/api/contact/edit',
+                    url: appUrl + '/api/contact/edit',
                     headers: {
                         'Content-Type': 'application/json'
                     },
@@ -70,11 +78,11 @@ export class ContactEditController {
         };
     }
 
-    deleteAddress($http, $scope, $log, $state) {
+    deleteAddress($http, $scope, $log, $state, appUrl) {
         $scope.deleteAddress = function (id) {
             var req = {
                 method: 'POST',
-                url: 'http://localhost:59649/api/address/delete',
+                url: appUrl + '/api/address/delete',
                 headers: {
                     'Content-Type': 'application/json'
                 },
