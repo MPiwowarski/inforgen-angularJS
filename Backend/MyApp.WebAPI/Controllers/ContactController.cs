@@ -8,10 +8,12 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 
 namespace MyApp.WebAPI.Controllers
 {
-    [RoutePrefix("api/contact")]
+    [System.Web.Http.RoutePrefix("api/contact")]
     public class ContactController : ApiController
     {
         private readonly IContactRepo _contactRepo;
@@ -36,6 +38,12 @@ namespace MyApp.WebAPI.Controllers
         // GET api/values/5
         public ContactDetailsDto Get(int id)
         {
+            if (id == 0)
+            {
+                throw new HttpResponseException(Request.CreateErrorResponse(HttpStatusCode.NotFound,
+                    "id can not be null"));
+            }
+
             var result = _contactRepo.FindById(id);
             return result;
         }
@@ -43,28 +51,34 @@ namespace MyApp.WebAPI.Controllers
         // POST api/values
         public async Task<IHttpActionResult> Post([FromBody]Contact value)
         {
+            if (value == null)
+            {
+                throw new HttpResponseException(Request.CreateErrorResponse(HttpStatusCode.NotFound,
+                    "contact can not be null"));
+            }
+
             var result = await _contactRepo.Create(value);
             return Ok(result);
         }
 
-        [HttpPatch]
-        [Route("edit")]
+        [System.Web.Http.HttpPatch]
+        [System.Web.Http.Route("edit")]
         public async Task<IHttpActionResult> Edit([FromBody]ContactUpdateDto value)
         {
             var result = await _contactRepo.Update(value);
             return Ok(result);
         }
 
-        [HttpPost]
-        [Route("delete")]
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.Route("delete")]
         public async Task<IHttpActionResult> Delete([FromBody]int id)
         {
             var result = await _contactRepo.Remove(id);
             return Ok(result);
         }
 
-        [HttpPost]
-        [Route("addAddress")]
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.Route("addAddress")]
         public async Task<IHttpActionResult> AddAddress([FromBody]AddAddressToContactDto dto)
         {
             var result = await _contactRepo.AddAddress(dto);

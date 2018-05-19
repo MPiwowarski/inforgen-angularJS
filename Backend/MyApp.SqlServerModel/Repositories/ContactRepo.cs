@@ -99,7 +99,7 @@ namespace MyApp.SqlServerModel.Repositories
                 {
                     Id = contact.Id,
                     Email = contact.Email,
-                    FirstName = contact.Email,
+                    FirstName = contact.FirstName,
                     LastName = contact.LastName,
                     Title = contact.Title,
                     Version = contact.Version,
