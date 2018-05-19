@@ -8,11 +8,11 @@ namespace MyApp.SqlServerModel.Repositories
 {
     public interface IContactRepo
     {
-        Contact Create(Contact entity);
+        Task<Contact> Create(Contact entity);
         Task<Contact> Update(ContactUpdateDto entity);
         ContactDetailsDto FindById(int id);
         ICollection<ContactBasicInfo> GetAll();
-        bool Remove(int id);
-        bool AddAddress(AddAddressToContactDto dto);
+        Task<bool> Remove(int id);
+        Task<bool> AddAddress(AddAddressToContactDto dto);
     }
 }

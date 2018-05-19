@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace MyApp.WebAPI.Controllers
@@ -24,37 +25,41 @@ namespace MyApp.WebAPI.Controllers
             _addressRepo = addressRepo;
         }
 
-        //GET api/values
+        [HttpGet]
         public IEnumerable<Address> Get()
         {
             var result = _addressRepo.GetAll();
             return result;
         }
 
-        // GET api/values/5
-        public Address Get(int id)
+        [HttpGet]
+        public async Task<IHttpActionResult> Get(int id)
         {
-            return _addressRepo.FindById(id);
+            var result = await _addressRepo.FindById(id);
+            return Ok(result);
         }
 
-        // POST api/values
-        public void Post([FromBody]Address value)
+        [HttpPost]
+        public async Task<IHttpActionResult> Post([FromBody]Address value)
         {
-            _addressRepo.Create(value);
+            var result = await _addressRepo.Create(value);
+            return Ok(result);
         }
 
         [HttpPatch]
         [Route("edit")]
-        public void Patch([FromBody]Address value)
+        public async Task<IHttpActionResult> Patch([FromBody]Address value)
         {
-            _addressRepo.Update(value);
+            var result = await _addressRepo.Update(value);
+            return Ok(result);
         }
 
         [HttpPost]
         [Route("delete")]
-        public void Delete([FromBody]int id)
+        public async Task<IHttpActionResult> Delete([FromBody]int id)
         {
-            _addressRepo.Remove(id);
+            var result = await _addressRepo.Remove(id);
+            return Ok(result);
         }
 
     }

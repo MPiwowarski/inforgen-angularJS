@@ -10,7 +10,7 @@ export class ContactEditController {
             this.editContact($scope, $http, $location, $log, appUrl);
             this.editAddress($scope, $location);
             this.addAddress($scope, $location, $state, $stateParams);
-            this.deleteAddress($http, $scope, $log, $state);
+            this.deleteAddress($http, $scope, $log, $state, appUrl);
         })
         .catch(err => {
             $log.log('fail'+ err);
@@ -30,8 +30,6 @@ export class ContactEditController {
             $scope.LastName = response.data.LastName;
             $scope.Email = response.data.Email;
             $scope.Addresses = response.data.Addresses
-
-            $log.log(response.data);
 
         }, function errorCallback() {
         });

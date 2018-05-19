@@ -41,33 +41,34 @@ namespace MyApp.WebAPI.Controllers
         }
 
         // POST api/values
-        public IHttpActionResult Post([FromBody]Contact value)
+        public async Task<IHttpActionResult> Post([FromBody]Contact value)
         {
-            _contactRepo.Create(value);
-            return Ok();
+            var result = await _contactRepo.Create(value);
+            return Ok(result);
         }
 
         [HttpPatch]
         [Route("edit")]
-        public async Task<IHttpActionResult> Patch([FromBody]ContactUpdateDto value)
+        public async Task<IHttpActionResult> Edit([FromBody]ContactUpdateDto value)
         {
-            await _contactRepo.Update(value);
-            return Ok();
+            var result = await _contactRepo.Update(value);
+            return Ok(result);
         }
 
         [HttpPost]
         [Route("delete")]
-        public IHttpActionResult Delete([FromBody]int id)
+        public async Task<IHttpActionResult> Delete([FromBody]int id)
         {
-            _contactRepo.Remove(id);
-            return Ok();
+            var result = await _contactRepo.Remove(id);
+            return Ok(result);
         }
 
         [HttpPost]
         [Route("addAddress")]
-        public IHttpActionResult AddAddress([FromBody]AddAddressToContactDto dto)
+        public async Task<IHttpActionResult> AddAddress([FromBody]AddAddressToContactDto dto)
         {
-            return Ok(_contactRepo.AddAddress(dto));
+            var result = await _contactRepo.AddAddress(dto);
+            return Ok(result);
         }
 
     }

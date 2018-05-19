@@ -16,26 +16,12 @@ namespace MyApp.SqlServerModel.Repositories
             _db = db;
         }
 
-        public Address Create(Address entity)
+        public async Task<Address> Create(Address entity)
         {
             try
             {
-                return _db.Set<Address>().Add(entity);
-                _db.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                //log exception
-                return null;
-            }
-        }
-
-        public Address Update(Address entity)
-        {
-            try
-            {
-                _db.Entry(entity).CurrentValues.SetValues(entity);
-                _db.SaveChanges();
+                _db.Set<Address>().Add(entity);
+                await _db.SaveChangesAsync();
                 return entity;
             }
             catch (Exception ex)
@@ -45,13 +31,28 @@ namespace MyApp.SqlServerModel.Repositories
             }
         }
 
-        public bool Remove(int id)
+        public async Task<Address> Update(Address entity)
         {
             try
             {
-                Address entity = FindById(id);
+                _db.Entry(entity).CurrentValues.SetValues(entity);
+                await _db.SaveChangesAsync();
+                return entity;
+            }
+            catch (Exception ex)
+            {
+                //log exception
+                return null;
+            }
+        }
+
+        public async Task<bool> Remove(int id)
+        {
+            try
+            {
+                Address entity = await _db.Address.FindAsync(id);
                 _db.Set<Address>().Remove(entity);
-                _db.SaveChanges();
+                await _db.SaveChangesAsync();
                 return true;
             }
             catch (Exception ex)
@@ -61,11 +62,11 @@ namespace MyApp.SqlServerModel.Repositories
             }
         }
 
-        public Address FindById(int id)
+        public async Task<Address> FindById(int id)
         {
             try
             {
-                return _db.Set<Address>().Find(id);
+                return await _db.Set<Address>().FindAsync(id);
             }
             catch (Exception ex)
             {

@@ -18,12 +18,12 @@ namespace MyApp.SqlServerModel.Repositories
             _db = db;
         }
 
-        public Contact Create(Contact entity)
+        public async Task<Contact> Create(Contact entity)
         {
             try
             {
                 _db.Set<Contact>().Add(entity);
-                _db.SaveChanges();
+                await _db.SaveChangesAsync();
                 return entity;
             }
             catch (Exception ex)
@@ -52,13 +52,13 @@ namespace MyApp.SqlServerModel.Repositories
             }
         }
 
-        public bool Remove(int id)
+        public async Task<bool> Remove(int id)
         {
             try
             {
                 Contact entity = _db.Contact.Find(id);
                 _db.Set<Contact>().Remove(entity);
-                _db.SaveChanges();
+                await _db.SaveChangesAsync();
                 return true;
             }
             catch (Exception ex)
@@ -143,7 +143,7 @@ namespace MyApp.SqlServerModel.Repositories
             }
         }
 
-        public bool AddAddress(AddAddressToContactDto dto)
+        public async Task<bool> AddAddress(AddAddressToContactDto dto)
         {
             using (var dbTran = _db.Database.BeginTransaction())
             {
@@ -170,7 +170,7 @@ namespace MyApp.SqlServerModel.Repositories
                     };
                     _db.Set<ContactAddress>().Add(rel);
 
-                    _db.SaveChanges();
+                    await _db.SaveChangesAsync();
                     dbTran.Commit();
                     return true;
                 }

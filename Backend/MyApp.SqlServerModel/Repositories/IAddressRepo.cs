@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using MyApp.SqlServerModel.Entities;
 
 namespace MyApp.SqlServerModel.Repositories
 {
     public interface IAddressRepo
     {
-        Address Create(Address entity);
-        Address Update(Address entity);
-        Address FindById(int id);
+        Task<Address> Create(Address entity);
+        Task<Address> Update(Address entity);
+        Task<Address> FindById(int id);
         ICollection<Address> GetAll();
-        bool Remove(int id);
+        Task<bool> Remove(int id);
     }
 }
