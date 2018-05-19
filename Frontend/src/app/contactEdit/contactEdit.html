@@ -7,7 +7,7 @@
     <div class="jumbotron text-center">
         <h3>Edit Contact</h1>
 
-            <form name="contactEditForm" ng-submit="editContact()">
+            <form name="contactEditForm" ng-submit="edit()">
                 <label>Title:
                     <input type="text" name="input" ng-model="Title" required ng-trim="false" ng-maxlength="50">
                 </label>
@@ -43,7 +43,6 @@
                     <span class="error" ng-show="contactEditForm.input.$error.email">
                         Not valid email!</span>
                 </div>
-
                 <input type="submit" value="Update">
             </form>
 
@@ -52,7 +51,7 @@
                 <h3>Allocated Addresses</h3>
                 <p class="animated infinite">
                     <button type="button" class="btn btn-lg btn-success" ng-click="addAddress()">Add New Address</button>
-                  </p>
+                </p>
                 <table class="table">
                     <thead>
                         <tr>
@@ -94,8 +93,7 @@
                             <td>{{ x.PostCode }}</td>
                             <td>{{ x.AddressType }}</td>
                             <td>
-                                <button type="button" class="btn btn-sm btn-danger" ng-click="deleteAddress(x.Id);">Delete</button>
-                                <button type="button" class="btn btn-sm btn-success" ng-click="editAddress(x.Id)">Edit</button>
+                                <button type="button" class="btn btn-sm btn-danger" ng-click="deleteAddress(x.Id);">Delete</button>                              
                             </td>
                         </tr>
                     </tbody>

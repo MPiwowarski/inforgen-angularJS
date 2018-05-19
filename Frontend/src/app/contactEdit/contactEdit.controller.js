@@ -1,20 +1,20 @@
 export class ContactEditController {
-    constructor($http, $scope, $log, $stateParams, $location,$state, configurationService) {
+    constructor($http, $scope, $log, $stateParams, $location, $state, configurationService) {
         'ngInject';
 
         configurationService.configurationService()
-        .init()
-        .then(config => {
-            var appUrl = config.appUrl;
-            this.getContactData($http, $scope, $log, $stateParams.id, appUrl);
-            this.editContact($scope, $http, $location, $log, appUrl);
-            this.editAddress($scope, $location);
-            this.addAddress($scope, $location, $state, $stateParams);
-            this.deleteAddress($http, $scope, $log, $state, appUrl);
-        })
-        .catch(err => {
-            $log.log('fail'+ err);
-        })
+            .init()
+            .then(config => {
+                var appUrl = config.appUrl;
+                this.getContactData($http, $scope, $log, $stateParams.id, appUrl);
+                this.editAddress($scope, $location);
+                this.addAddress($scope, $location, $state, $stateParams);
+                this.deleteAddress($http, $scope, $log, $state, appUrl);
+                this.edit($scope, $http, $location, $log, $stateParams, appUrl);
+            })
+            .catch(err => {
+                $log.log('fail' + err);
+            })
 
     }
 
@@ -33,35 +33,6 @@ export class ContactEditController {
 
         }, function errorCallback() {
         });
-    }
-
-    editContact($scope, $http, $location, $log, appUrl) {
-        $scope.editContact = function () {
-            if ($scope.contactEditForm.$valid) {
-                var req = {
-                    method: 'PATCH',
-                    url: appUrl + '/api/contact/edit',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    data: {
-                        Id: $scope.Id,
-                        Title: $scope.Title,
-                        FirstName: $scope.FirstName,
-                        LastName: $scope.LastName,
-                        Email: $scope.Email
-                    }
-                };
-                $http(req).then(function () {
-                    $location.path('/contactList');
-                }, function () {
-                });
-            }
-            else {
-                $log.log('invalid form');
-                //throw popup
-            }
-        };
     }
 
     editAddress($scope, $location) {
@@ -94,5 +65,36 @@ export class ContactEditController {
 
             });
         };
+    }
+
+    edit($scope, $http, $location, $log, $stateParams, appUrl) {
+        $scope.edit = function () {
+           
+            if ($scope.contactEditForm.$valid) {
+                var req = {
+                    method: 'PATCH',
+                    url: appUrl + '/api/contact/edit',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    data: {
+                        Id: $scope.Id,
+                        Title: $scope.Title,
+                        FirstName: $scope.FirstName,
+                        LastName: $scope.LastName,
+                        Email: $scope.Email
+                    }
+                };
+       
+                $http(req).then(function () {
+                    $location.path('/contactList');
+                }, function () {
+                });
+            }
+            else {
+                $log.log('invalid form');
+                //throw popup
+            }
+        }
     }
 }  

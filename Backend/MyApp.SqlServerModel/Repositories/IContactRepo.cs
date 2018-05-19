@@ -9,7 +9,7 @@ namespace MyApp.SqlServerModel.Repositories
     public interface IContactRepo
     {
         Task<Contact> Create(Contact entity);
-        Task<Contact> Update(ContactUpdateDto entity);
+        Task<ContactUpdateDto> Update(ContactUpdateDto entity);
         ContactDetailsDto FindById(int id);
         ICollection<ContactBasicInfo> GetAll();
         Task<bool> Remove(int id);

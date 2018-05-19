@@ -33,7 +33,7 @@ namespace MyApp.SqlServerModel.Repositories
             }
         }
 
-        public async Task<Contact> Update(ContactUpdateDto entity)
+        public async Task<ContactUpdateDto> Update(ContactUpdateDto entity)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace MyApp.SqlServerModel.Repositories
                 contact.LastName = entity.LastName;
                 contact.Email = entity.Email;
                 await _db.SaveChangesAsync();
-                return contact;
+                return entity;
             }
             catch (Exception ex)
             {
