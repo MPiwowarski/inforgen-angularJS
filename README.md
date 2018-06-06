@@ -1,4 +1,10 @@
-"# inforgen" 
+"# Inforgen" 
+Used technologies:
+- AngularJS with ES6,
+- ASP.NET Web API,
+- C#, 
+- EF-code first
+
 Description of the quick configuration of the development environment
 
 1. Creation of the database.
